@@ -10,6 +10,7 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 	this.call <- match.call()
 	p4s <- as.character(NA)
 	Polys <- NULL
+    print("Test!")
 	if (is(data, "SpatialPolygonsDataFrame")) 
 		Polys <- as(data, "SpatialPolygons")
 	if (is(data, "Spatial")) {
