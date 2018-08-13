@@ -51,7 +51,10 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 	y <- model.extract(mf, "response")
 	x <- model.matrix(mt, mf)
 
+    print("Starting wfit")
 	lm <- lm.wfit(x, y, w=weights)
+    print("Finished wfit")
+
 	lm$x <- x
 	lm$y <- y
         gTSS <- c(cov.wt(matrix(y, ncol=1), wt=weights, method="ML")$cov*dp.n)
@@ -90,6 +93,7 @@ gwr <- function(formula, data = list(), coords, bandwidth,
         	if (predictions && fp.given)
 		    stop("predictions not available for matrix fit points")
 	}
+    print("Finished setting fit.points")
 
 	n <- NROW(fit.points)
 	rownames(fit.points) <- NULL
