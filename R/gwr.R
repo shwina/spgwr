@@ -26,6 +26,8 @@ gwr <- function(formula, data = list(), coords, bandwidth,
                 }
 		data <- as(data, "data.frame")
 	}
+    print("Finished reading data")
+
         if (is.null(longlat) || !is.logical(longlat)) longlat <- FALSE
 	if (missing(coords))
 		stop("Observation coordinates have to be given")
@@ -48,6 +50,8 @@ gwr <- function(formula, data = list(), coords, bandwidth,
     	if (is.null(weights)) weights <- rep(as.numeric(1), dp.n)
     	if (any(is.na(weights))) stop("NAs in weights")
     	if (any(weights < 0)) stop("negative weights")
+
+    print("Running extract")
 	y <- model.extract(mf, "response")
 	x <- model.matrix(mt, mf)
 
