@@ -10,7 +10,6 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 	this.call <- match.call()
 	p4s <- as.character(NA)
 	Polys <- NULL
-    print("Test!")
 	if (is(data, "SpatialPolygonsDataFrame")) 
 		Polys <- as(data, "SpatialPolygons")
 	if (is(data, "Spatial")) {
@@ -137,7 +136,8 @@ gwr <- function(formula, data = list(), coords, bandwidth,
             fit_are_data=fit_are_data)
         timings[["set_up"]] <- proc.time() - .ptime_start
         .ptime_start <- proc.time()
-
+    
+    print("Starting parallel 1")
 	if (!is.null(cl) && length(cl) > 1 && fp.given && !hatmatrix) {
             if (requireNamespace("parallel", quietly = TRUE)) {
 	      l_fp <- lapply(parallel::splitIndices(nrow(fit.points), length(cl)), 
@@ -167,7 +167,7 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 #	        "x", "weights", "yhat"))
 
               parallel::clusterExport(cl, varlist, env)
-
+          print("Exported cluster")
 	      res <- parallel::parLapply(cl, l_fp, function(fp) .GWR_int(fit.points=fp,
 	        coords=coords, gweight=gweight, y=y, x=x,
 	        weights=weights, yhat=yhat, GWR_args=GWR_args))
