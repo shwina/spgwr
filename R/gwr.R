@@ -118,6 +118,12 @@ gwr <- function(formula, data = list(), coords, bandwidth,
             predictions <- TRUE
             input_predictions <- FALSE
             predx <- x
+            print(rownames(fit.points))
+            print(colnames(fit.points))
+            print(rownames(predx))
+            print(colnames(predx))
+            print(dim(fit.points))
+            print(dim(predx))
             fit.points <- cbind(fit.points, predx)
         }
 	m <- NCOL(x)
