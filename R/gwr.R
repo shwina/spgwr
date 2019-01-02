@@ -370,6 +370,8 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 
 	df <- as.data.frame(df$df)
 	if (predictions) fit.points <- fit.points[,1:2, drop=FALSE]
+
+    print("Maciej Kryza 130906 drop issue")
 # Maciej Kryza 130906 drop issue
         row.names(fit.points) <- row.names(df)
 	SDF <- SpatialPointsDataFrame(coords=fit.points, 
