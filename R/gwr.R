@@ -107,8 +107,6 @@ gwr <- function(formula, data = list(), coords, bandwidth,
 		stop("new data matrix rows mismatch")
             fit.points <- cbind(fit.points, predx)
         }
-    print(dim(fit.points))
-    print(dim(predx))
 #	if (is.null(fit.points)) fit.points <- coords
 # cluster issue with fit.points 120505 Maximilian Spross
         fit_are_data <- isTRUE(all.equal(fit.points, coords,
